@@ -41,6 +41,11 @@ jobs:
         with:
           submodules: true
 
+      - name: Pull godot-cpp
+        working-directory: ./CppCode
+        run: |
+          git pull https://github.com/godotengine/godot-cpp.git 4.4
+
       # Lint
       #- name: Setup clang-format
       #  shell: bash
@@ -61,7 +66,7 @@ jobs:
       # Setup dependencies
       - name: Setup godot-cpp
         working-directory: ./CppCode
-        uses: ./godot-cpp/.github/actions/setup-godot-cpp
+        uses: ../.github/actions/setup-godot-cpp
         with:
           platform: ${{ matrix.target.platform }}
           em-version: 3.1.62
@@ -70,7 +75,7 @@ jobs:
 
       - name: Restore .scons_cache
         working-directory: ./CppCode
-        uses: ./godot-cpp/.github/actions/godot-cache-restore
+        uses: ../.github/actions/godot-cache-restore
         with:
           scons-cache: ${{ github.workspace }}/.scons-cache/
           cache-name: ${{ matrix.target.platform }}_${{ matrix.target.arch }}_${{ matrix.float-precision }}_${{ matrix.target-type }}
@@ -85,7 +90,7 @@ jobs:
 
       - name: Save .scons_cache
         working-directory: ./CppCode
-        uses: ./godot-cpp/.github/actions/godot-cache-save
+        uses: ../.github/actions/godot-cache-save
         with:
           scons-cache: ${{ github.workspace }}/.scons-cache/
           cache-name: ${{ matrix.target.platform }}_${{ matrix.target.arch }}_${{ matrix.float-precision }}_${{ matrix.target-type }}
