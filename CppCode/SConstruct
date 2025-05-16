@@ -1,0 +1,105 @@
+#!/usr/bin/env python
+import os;
+import sys;
+
+from methods import print_error;
+
+# ===========================================================
+# * Config
+# ===========================================================
+
+project_name = "HAXExGODOT";
+
+# Build profiles can be used to decrease compile times.
+# You can either specify "disabled_classes", OR
+# explicitly specify "enabled_classes" which disables all other classes.
+# Modify the example file as needed and uncomment the line below or
+# manually specify the build_profile parameter when running SCons.
+
+# localEnv["build_profile"] = "build_profile.json"
+
+# ===========================================================
+# * Setup
+# ===========================================================
+
+localEnv = Environment(tools=["default"], PLATFORM="");
+
+customs = ["custom.py"];
+customs = [os.path.abspath(path) for path in customs];
+
+opts = Variables(customs, ARGUMENTS);
+opts.Update(localEnv);
+
+Help(opts.GenerateHelpText(localEnv));
+
+env = localEnv.Clone();
+
+# ===========================================================
+# * Add godot-cpp/
+# ===========================================================
+
+if not (os.path.isdir("godot-cpp") and os.listdir("godot-cpp")):
+    print_error("godot-cpp is not available within this folder. Follow the Building instructions in the HAXExGODOT README.");
+    sys.exit(1);
+
+env = SConscript("godot-cpp/SConstruct", {"env": env, "customs": customs});
+
+# ===========================================================
+# * Add src/ source files...
+# ===========================================================
+
+env.Append(CPPPATH=["src/"]);
+sources = Glob("src/*.cpp");
+
+# ===========================================================
+# * Generate documentation
+#
+# TODO: How does this work? Why do I care?
+# ===========================================================
+
+# if env["target"] in ["editor", "template_debug"]:
+#     try:
+#         doc_data = env.GodotCPPDocData("src/gen/doc_data.gen.cpp", source=Glob("doc_classes/*.xml"));
+#         sources.append(doc_data);
+#     except AttributeError:
+#         print("Not including class reference as we're targeting a pre-4.3 baseline.");
+
+# ===========================================================
+# * I don't know what this does lol
+#
+# .dev doesn't inhibit compatibility, so we don't need to key it.
+# .universal just means "compatible with all relevant arches" so we don't need to key it.
+# ===========================================================
+
+suffix = env['suffix']\
+    .replace(".dev", "")\
+    .replace(".universal", "");
+
+# ===========================================================
+# * Determine output library file
+# ===========================================================
+
+lib_filename = "{}{}{}{}".format(
+    env.subst('$SHLIBPREFIX'),
+    project_name,
+    suffix,
+    env.subst('$SHLIBSUFFIX')
+);
+
+library = env.SharedLibrary(
+    "bin/{}/{}".format(env['platform'], lib_filename),
+    source=sources,
+);
+
+# ===========================================================
+# * Copy library to addons
+# ===========================================================
+
+copy = env.Install("../addons/{}/bin/{}/".format(project_name, env["platform"]), library);
+
+# ===========================================================
+# * What does this mean WHAT DOES THIS MEAN
+# ===========================================================
+
+default_args = [library, copy];
+Default(*default_args);

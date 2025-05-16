@@ -1,3 +1,6 @@
+# Addon stuff
+addons/HAXExGODOT/bin
+
 # Godot 4+ specific ignores
 .godot/
 .nomedia
