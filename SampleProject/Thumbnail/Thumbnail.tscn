@@ -1,0 +1,233 @@
+[gd_scene load_steps=16 format=3 uid="uid://2jrskfv82oco"]
+
+[ext_resource type="Shader" uid="uid://choclnld76esg" path="res://SampleProject/Thumbnail/Shaders/GroundShader.gdshader" id="1_cuhnq"]
+[ext_resource type="Texture2D" uid="uid://2idgy20enxwe" path="res://SampleProject/Thumbnail/Images/Asphalt017_4K_NormalDX.jpg" id="2_3lpq6"]
+[ext_resource type="Texture2D" uid="uid://c7noo5owx0it7" path="res://SampleProject/Thumbnail/Images/pear36-1x.png" id="2_6r3be"]
+[ext_resource type="FontFile" uid="uid://leystmj3ytwv" path="res://SampleProject/Thumbnail/Fonts/Kumbh_Sans/KumbhSans-VariableFont_YOPQ,wght.ttf" id="4_c2pky"]
+[ext_resource type="Shader" uid="uid://dse7kv0ge334m" path="res://SampleProject/Thumbnail/Shaders/X.gdshader" id="5_mwpbt"]
+[ext_resource type="Texture2D" uid="uid://0g0kpht5bxm8" path="res://SampleProject/Thumbnail/Images/GodotLogo.png" id="6_1jmeq"]
+[ext_resource type="Texture2D" uid="uid://ctvhyyyfjuhr7" path="res://SampleProject/Thumbnail/Images/HaxeLogo.png" id="7_ufg4v"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_tukmx"]
+size = Vector2(400, 400)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6r3be"]
+render_priority = 0
+shader = ExtResource("1_cuhnq")
+shader_parameter/palette = ExtResource("2_6r3be")
+shader_parameter/normal_map = ExtResource("2_3lpq6")
+shader_parameter/scale = 50.0
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_cuhnq"]
+sky_top_color = Color(1, 0.5, 0, 1)
+sky_horizon_color = Color(0, 0.572, 0.88, 1)
+sky_curve = 0.665742
+ground_bottom_color = Color(0, 0.572549, 0.878431, 1)
+ground_horizon_color = Color(0, 0.572549, 0.878431, 1)
+ground_curve = 0.519841
+energy_multiplier = 1.81
+
+[sub_resource type="Sky" id="Sky_6r3be"]
+sky_material = SubResource("ProceduralSkyMaterial_cuhnq")
+
+[sub_resource type="Environment" id="Environment_3lpq6"]
+background_mode = 2
+sky = SubResource("Sky_6r3be")
+reflected_light_source = 2
+tonemap_mode = 2
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
+glow_enabled = true
+fog_mode = 1
+fog_light_energy = 3.97
+fog_sun_scatter = 0.47
+fog_density = 1.0
+fog_sky_affect = 0.24
+adjustment_enabled = true
+adjustment_brightness = 1.1
+adjustment_contrast = 1.1
+adjustment_saturation = 1.1
+
+[sub_resource type="BoxMesh" id="BoxMesh_1jmeq"]
+size = Vector3(60, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ufg4v"]
+render_priority = 0
+shader = ExtResource("5_mwpbt")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ramcp"]
+render_priority = 0
+shader = ExtResource("5_mwpbt")
+
+[node name="Thumbnail" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 0.996058, -0.0887031, 0, 0.0887031, 0.996058, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 4.38423e-14, -0.957123, -4.18372e-08, -0.289683, -0.289683, -1.26625e-08, 0.957123, 3, 0, 3)
+fov = 90.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 5.03609e-16, -0.989452, -4.32504e-08, -0.144857, -0.144857, -6.3319e-09, 0.989452, 0, 0, -200)
+mesh = SubResource("PlaneMesh_tukmx")
+surface_material_override/0 = SubResource("ShaderMaterial_6r3be")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_3lpq6")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.696513, -0.311991, 0.646167, -0.576648, -0.779295, 0.245307, 0.427021, -0.543471, -0.722698, 0, 0, 0)
+
+[node name="HAXE" type="Label3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 0, -0.5, -2.18557e-08, -0.866025, -0.866025, -3.78552e-08, 0.5, 3.03, 6.6, -3.245)
+outline_modulate = Color(0.27, 0.108, 0, 1)
+text = "HAXE"
+font = ExtResource("4_c2pky")
+font_size = 502
+outline_size = 127
+
+[node name="HAXE2" type="Label3D" parent="HAXE"]
+transform = Transform3D(1, 0, 0, -3.55271e-15, 1, 0, 0, 0, 1, 0, 0, -0.5)
+modulate = Color(0.270588, 0.109804, 0, 1)
+outline_modulate = Color(0.27, 0.108, 0, 1)
+text = "HAXE"
+font = ExtResource("4_c2pky")
+font_size = 502
+outline_size = 127
+
+[node name="HAXE3" type="Label3D" parent="HAXE"]
+transform = Transform3D(1, 0, 0, -3.55271e-15, 1, 0, 0, 0, 1, 0, 0, -1)
+modulate = Color(0.270588, 0.109804, 0, 1)
+outline_modulate = Color(0.27, 0.108, 0, 1)
+text = "HAXE"
+font = ExtResource("4_c2pky")
+font_size = 502
+outline_size = 127
+
+[node name="HAXE4" type="Label3D" parent="HAXE"]
+transform = Transform3D(1, 0, 0, -3.55271e-15, 1, 0, 0, 0, 1, 0, 0, -1.5)
+modulate = Color(0.270588, 0.109804, 0, 1)
+outline_modulate = Color(0.27, 0.108, 0, 1)
+text = "HAXE"
+font = ExtResource("4_c2pky")
+font_size = 502
+outline_size = 127
+
+[node name="HAXE5" type="Label3D" parent="HAXE"]
+transform = Transform3D(1, 0, 0, -3.55271e-15, 1, 0, 0, 0, 1, 0, 0, -2)
+modulate = Color(0.270588, 0.109804, 0, 1)
+outline_modulate = Color(0.27, 0.108, 0, 1)
+text = "HAXE"
+font = ExtResource("4_c2pky")
+font_size = 502
+outline_size = 127
+
+[node name="HAXE6" type="Label3D" parent="HAXE"]
+transform = Transform3D(1, 0, 0, -3.55271e-15, 1, 0, 0, 0, 1, 0, 0, -2.5)
+modulate = Color(0.270588, 0.109804, 0, 1)
+outline_modulate = Color(0.27, 0.108, 0, 1)
+text = "HAXE"
+font = ExtResource("4_c2pky")
+font_size = 502
+outline_size = 127
+
+[node name="GODOT" type="Label3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 0, -0.793353, -3.46786e-08, 0.608761, 0.608761, 2.66098e-08, 0.793353, 2.89, -1.2, -6.455)
+outline_modulate = Color(0, 0.196333, 0.31, 1)
+text = "GODOT"
+font = ExtResource("4_c2pky")
+font_size = 502
+outline_size = 127
+
+[node name="GODOT2" type="Label3D" parent="GODOT"]
+transform = Transform3D(1, -4.44089e-16, 0, 3.55271e-15, 1, 0, 0, -8.88178e-16, 1, 0, 0, -0.5)
+modulate = Color(0, 0.196078, 0.309804, 1)
+outline_modulate = Color(0, 0.196333, 0.31, 1)
+text = "GODOT"
+font = ExtResource("4_c2pky")
+font_size = 502
+outline_size = 127
+
+[node name="GODOT3" type="Label3D" parent="GODOT"]
+transform = Transform3D(1, -4.44089e-16, 0, 3.55271e-15, 1, 0, 0, -8.88178e-16, 1, 0, 0, -1)
+modulate = Color(0, 0.196078, 0.309804, 1)
+outline_modulate = Color(0, 0.196333, 0.31, 1)
+text = "GODOT"
+font = ExtResource("4_c2pky")
+font_size = 502
+outline_size = 127
+
+[node name="GODOT4" type="Label3D" parent="GODOT"]
+transform = Transform3D(1, -4.44089e-16, 0, 3.55271e-15, 1, 0, 0, -8.88178e-16, 1, 0, 0, -1.5)
+modulate = Color(0, 0.196078, 0.309804, 1)
+outline_modulate = Color(0, 0.196333, 0.31, 1)
+text = "GODOT"
+font = ExtResource("4_c2pky")
+font_size = 502
+outline_size = 127
+
+[node name="GODOT5" type="Label3D" parent="GODOT"]
+transform = Transform3D(1, -4.44089e-16, 0, 3.55271e-15, 1, 0, 0, -8.88178e-16, 1, 0, 0, -2)
+modulate = Color(0, 0.196078, 0.309804, 1)
+outline_modulate = Color(0, 0.196333, 0.31, 1)
+text = "GODOT"
+font = ExtResource("4_c2pky")
+font_size = 502
+outline_size = 127
+
+[node name="GODOT6" type="Label3D" parent="GODOT"]
+transform = Transform3D(1, -4.44089e-16, 0, 3.55271e-15, 1, 0, 0, -8.88178e-16, 1, 0, 0, -2.5)
+modulate = Color(0, 0.196078, 0.309804, 1)
+outline_modulate = Color(0, 0.196333, 0.31, 1)
+text = "GODOT"
+font = ExtResource("4_c2pky")
+font_size = 502
+outline_size = 127
+
+[node name="X" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.80425, 0.592978, -0.0394737, -0.548733, 0.766462, 0.333807, 0.228195, -0.246804, 0.941815, 3.015, 3.041, -5.626)
+mesh = SubResource("BoxMesh_1jmeq")
+surface_material_override/0 = SubResource("ShaderMaterial_ufg4v")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="X"]
+transform = Transform3D(0.424671, -0.904797, 0.0315654, 0.896137, 0.425056, 0.12754, -0.128815, -0.0258758, 0.991331, 0, 0, 0)
+mesh = SubResource("BoxMesh_1jmeq")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_ramcp")
+
+[node name="GodotLogo" type="Sprite3D" parent="."]
+transform = Transform3D(-4.37114e-07, 10, 0, -7.66044, -3.34849e-07, 6.42788, 6.42788, 2.80971e-07, 7.66044, 40.69, -30.02, -101.195)
+shaded = true
+render_priority = -2
+texture = ExtResource("6_1jmeq")
+
+[node name="Sprite3D2" type="Sprite3D" parent="GodotLogo"]
+transform = Transform3D(1, 2.66454e-15, -2.98023e-08, -8.88178e-16, 1, 1.77636e-15, 2.98023e-08, 1.77636e-15, 1, 0.05, 0.05, -0.2)
+visible = false
+modulate = Color(0, 0, 0, 1)
+texture = ExtResource("6_1jmeq")
+
+[node name="Sprite3D3" type="Sprite3D" parent="GodotLogo"]
+transform = Transform3D(1, 2.66454e-15, -2.98023e-08, -8.88178e-16, 1, 1.77636e-15, 2.98023e-08, 1.77636e-15, 1, 0.1, 0.1, -0.4)
+visible = false
+modulate = Color(0, 0, 0, 1)
+texture = ExtResource("6_1jmeq")
+
+[node name="HaxeLogo" type="Sprite3D" parent="."]
+transform = Transform3D(-3.96462e-07, 9.07, 0, -6.46918, -2.82777e-07, -6.35725, -6.35725, -2.77884e-07, 6.46918, 39.87, 97.7, -65.43)
+shaded = true
+render_priority = -2
+texture = ExtResource("7_ufg4v")
+
+[node name="Sprite3D3" type="Sprite3D" parent="HaxeLogo"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.02, -0.5)
+visible = false
+modulate = Color(0, 0, 0, 1)
+texture = ExtResource("7_ufg4v")
+
+[node name="Sprite3D4" type="Sprite3D" parent="HaxeLogo"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.555, -0.04, -1)
+visible = false
+modulate = Color(0, 0, 0, 1)
+texture = ExtResource("7_ufg4v")
