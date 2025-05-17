@@ -49,7 +49,11 @@ env = SConscript("godot-cpp/SConstruct", {"env": env, "customs": customs});
 # ===========================================================
 
 env.Append(CPPPATH=["src/"]);
-sources = Glob("src/*.cpp");
+
+sources = [
+    Glob("src/*.cpp"),
+    Glob("src/ScriptLanguage/*.cpp")
+]
 
 # ===========================================================
 # * Generate documentation
@@ -96,6 +100,13 @@ library = env.SharedLibrary(
 # ===========================================================
 
 copy = env.Install("../addons/{}/bin/{}/".format(project_name, env["platform"]), library);
+
+# ===========================================================
+# * Generate compile_database.json
+# ===========================================================
+
+env.Tool('compilation_db');
+cdb = env.CompilationDatabase('compile_database.json');
 
 # ===========================================================
 # * What does this mean WHAT DOES THIS MEAN
