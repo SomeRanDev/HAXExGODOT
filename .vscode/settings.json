@@ -1,0 +1,7 @@
+{
+	"editor.formatOnSave": true,
+	"files.exclude": {
+		"CppCode/godot-cpp": true,
+		"**/*.obj": true
+	}
+}
