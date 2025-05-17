@@ -5,7 +5,7 @@
 ### General config, applies to all languages ###
 BasedOnStyle:  LLVM
 AccessModifierOffset: -4
-AlignAfterOpenBracket: DontAlign
+AlignAfterOpenBracket: Align
 # AlignArrayOfStructures: None
 # AlignConsecutiveMacros: None
 # AlignConsecutiveAssignments: None
@@ -13,9 +13,9 @@ AlignAfterOpenBracket: DontAlign
 # AlignConsecutiveDeclarations: None
 # AlignEscapedNewlines: Right
 AlignOperands:   DontAlign
-AlignTrailingComments: false
+AlignTrailingComments: true
 # AllowAllArgumentsOnNextLine: true
-AllowAllParametersOfDeclarationOnNextLine: false
+AllowAllParametersOfDeclarationOnNextLine: true
 # AllowShortEnumsOnASingleLine: true
 # AllowShortBlocksOnASingleLine: Never
 # AllowShortCaseLabelsOnASingleLine: false
@@ -29,8 +29,8 @@ AllowAllParametersOfDeclarationOnNextLine: false
 # AlwaysBreakTemplateDeclarations: MultiLine
 # AttributeMacros:
 #   - __capability
-# BinPackArguments: true
-# BinPackParameters: true
+BinPackArguments: true
+BinPackParameters: true
 # BraceWrapping:
 #   AfterCaseLabel:  false
 #   AfterClass:      false
@@ -65,7 +65,7 @@ ColumnLimit:     0
 # CompactNamespaces: false
 ConstructorInitializerIndentWidth: 8
 ContinuationIndentWidth: 8
-Cpp11BracedListStyle: false
+Cpp11BracedListStyle: true
 # DeriveLineEnding: true
 # DerivePointerAlignment: false
 # DisableFormat:   false
@@ -111,7 +111,7 @@ KeepEmptyLinesAtTheStartOfBlocks: false
 # MaxEmptyLinesToKeep: 1
 # NamespaceIndentation: None
 # PenaltyBreakAssignment: 2
-# PenaltyBreakBeforeFirstCallParameter: 19
+PenaltyBreakBeforeFirstCallParameter: 1
 # PenaltyBreakComment: 300
 # PenaltyBreakFirstLessLess: 120
 # PenaltyBreakOpenParenthesis: 0
@@ -138,7 +138,7 @@ PointerAlignment: Left
 # SpaceBeforeCpp11BracedList: false
 # SpaceBeforeCtorInitializerColon: true
 # SpaceBeforeInheritanceColon: true
-SpaceBeforeParens: SBPO_Custom
+SpaceBeforeParens: Custom
 SpaceBeforeParensOptions:
   AfterControlStatements: false
   AfterForeachMacros: false
