@@ -17,7 +17,7 @@ config/icon="uid://dsg7amiy7m2q2"
 [display]
 
 window/size/viewport_width=1500
-window/size/viewport_height=500
+window/size/viewport_height=300
 
 [editor_plugins]
 

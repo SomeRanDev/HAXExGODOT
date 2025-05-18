@@ -68,6 +68,11 @@ transform = Transform3D(1, 0, 0, 0, 0.996058, -0.0887031, 0, 0.0887031, 0.996058
 transform = Transform3D(-4.37114e-08, 1, 4.38423e-14, -0.957123, -4.18372e-08, -0.289683, -0.289683, -1.26625e-08, 0.957123, 3, 0, 3)
 fov = 90.0
 
+[node name="Camera3D2" type="Camera3D" parent="."]
+transform = Transform3D(-0.029275, 0.973523, -0.226707, -0.967439, -0.08464, -0.238534, -0.251406, 0.212342, 0.944302, 3, 0, 3)
+current = true
+fov = 51.0
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.37114e-08, 1, 5.03609e-16, -0.989452, -4.32504e-08, -0.144857, -0.144857, -6.3319e-09, 0.989452, 0, 0, -200)
 mesh = SubResource("PlaneMesh_tukmx")
@@ -187,10 +192,22 @@ outline_size = 127
 
 [node name="X" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.80425, 0.592978, -0.0394737, -0.548733, 0.766462, 0.333807, 0.228195, -0.246804, 0.941815, 3.015, 3.041, -5.626)
+visible = false
 mesh = SubResource("BoxMesh_1jmeq")
 surface_material_override/0 = SubResource("ShaderMaterial_ufg4v")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="X"]
+transform = Transform3D(0.424671, -0.904797, 0.0315654, 0.896137, 0.425056, 0.12754, -0.128815, -0.0258758, 0.991331, 0, 0, 0)
+mesh = SubResource("BoxMesh_1jmeq")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_ramcp")
+
+[node name="X2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.80425, 0.592978, -0.0394737, -0.548733, 0.766462, 0.333807, 0.228195, -0.246804, 0.941815, 4.095, 3.041, -5.626)
+mesh = SubResource("BoxMesh_1jmeq")
+surface_material_override/0 = SubResource("ShaderMaterial_ufg4v")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="X2"]
 transform = Transform3D(0.424671, -0.904797, 0.0315654, 0.896137, 0.425056, 0.12754, -0.128815, -0.0258758, 0.991331, 0, 0, 0)
 mesh = SubResource("BoxMesh_1jmeq")
 skeleton = NodePath("../..")
