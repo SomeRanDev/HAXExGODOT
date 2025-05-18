@@ -19,6 +19,10 @@ config/icon="uid://dsg7amiy7m2q2"
 window/size/viewport_width=1500
 window/size/viewport_height=500
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/HAXExGODOT/plugin.cfg")
+
 [rendering]
 
 rendering_device/driver.windows="d3d12"
