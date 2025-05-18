@@ -1,6 +1,13 @@
-# HAXExGODOT
-Haxe -> Godot using WHATEVER YOU WANT (GDExtension/C#/GDScript)
+<img src="SampleProject/Thumbnail/Thumbnail.png" /> 
+
+### The ultimate toolkit for using Haxe in Godot. 
 
 # Building
 
-Download the source for [godot-cpp](https://github.com/godotengine/godot-cpp) and place it in `CppCode/godot-cpp`. For example, `godot-cpp`'s `SConstruct` file should be at: `CppCode/godot-cpp/SConstruct`.
+| #   | What to do                                           | What to write                            |
+| --- | ---------------------------------------------------- | ---------------------------------------- |
+| 1   | Download the source code for [godot-cpp](https://github.com/godotengine/godot-cpp) (choose the branch for your version of Godot) and place it in `CppCode/godot-cpp`.     | <pre>cd &lt;HAXExGODOT&gt;/CppCode<br>git clone -b 4.4 https://github.com/godotengine/godot-cpp.git</pre>   |
+| 2   | Install [Python 3](https://www.python.org/)           | <pre>https://www.python.org/</pre>                                     |
+| 3   | Install `scons` if you don't have it already.         | <pre>python -m pip install scons</pre>                                 |
+| 4   | Run `scons` in `CppCode/godot-cpp`                    | <pre>cd &lt;HAXExGODOT&gt;/CppCode/godot-cpp<br>python -m SCons</pre>  |
+| 5   | Run `scons` in `CppCode`                              | <pre>cd &lt;HAXExGODOT&gt;/CppCode<br>python -m SCons</pre>            |
