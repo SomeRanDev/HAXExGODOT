@@ -1,6 +1,6 @@
 <img src="SampleProject/Thumbnail/Thumbnail.png" /> 
 
-### The ultimate toolkit for using Haxe in Godot. 
+### The ultimate toolkit for using Haxe in Godot. (In development and unusable atm.)
 
 # Building
 
